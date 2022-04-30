@@ -114,9 +114,11 @@ készül
 ![database](../docs/img/database.png)
 
 ## 8. Implementációs terv:
-  Az alkalmazás Windows operációs rendszerre klszül IntelliJ Ideaban, Java nyelven.
+  Az alkalmazás Windows operációs rendszerre készül IntelliJ Ideaban, Java nyelven.
   
 ![database](../docs/img/impl_terv.png)
+
+A képen látható osztályok, felépítése és megnevezése még változhat.
 
 ## 9. Tesztterv:
 **Unit teszt:**
