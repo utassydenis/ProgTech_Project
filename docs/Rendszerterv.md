@@ -118,7 +118,7 @@ készül
   
 ![database](../docs/img/impl_terv.png)
 
-A képen látható osztályok, felépítése és megnevezése még változhat.
+A képen látható osztályok felépítése és megnevezése még változhat.
 
 ## 9. Tesztterv:
 **Unit teszt:**
