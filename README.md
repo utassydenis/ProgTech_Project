@@ -1,1 +1,1 @@
-# ProgTech_Project - auto configurator
+# ProgTech_Project - spaceship configurator
