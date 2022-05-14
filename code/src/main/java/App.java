@@ -1,4 +1,5 @@
 import frames.ConfigFrame;
+import frames.LoginFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,6 +9,8 @@ public class App {
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("project started");
         ConfigFrame frame = new ConfigFrame();
+        LoginFrame loginFrame = new LoginFrame();
         logger.info("window initialized");
+
     }
 }
