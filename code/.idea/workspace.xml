@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc0e5110-f4c4-4425-8c99-26f88f39b6e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_2_0_0_alpha7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/code.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_slf4j_impl_2_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_21.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/database/MySQLConnect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/ConfigFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frames/ConfigFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Frames/ConfigFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frames/ConfigFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652547421458</updated>
       <workItem from="1652547424559" duration="320000" />
-      <workItem from="1652548383723" duration="2138000" />
+      <workItem from="1652548383723" duration="6920000" />
     </task>
     <servers />
   </component>
