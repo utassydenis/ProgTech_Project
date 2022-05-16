@@ -1,5 +1,6 @@
 import frames.ConfigFrame;
 import frames.LoginFrame;
+import frames.SavedShipsFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import database.MySQLConnect;
@@ -12,8 +13,7 @@ public class App {
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("project started");
         MySQLConnect.connectDatabase();
-        //LoginFrame loginFrame = new LoginFrame();
-        ConfigFrame configFrame = new ConfigFrame();
+        LoginFrame loginFrame = new LoginFrame();
         logger.info("window initialized");
 
 
