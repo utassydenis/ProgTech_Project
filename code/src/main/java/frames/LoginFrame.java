@@ -23,8 +23,10 @@ public class LoginFrame extends JDialog {
     private JTextField registrationPasswordField;
     private JButton registrationRegistrationButton;
     private JPanel overall;
+    private JPanel choicePanel;
+    private JButton createNewShipButton;
+    private JButton checkOrdersButton;
     static Logger logger = LoggerFactory.getLogger(LoginFrame.class);
-
 
 
     public LoginFrame() {
@@ -34,6 +36,7 @@ public class LoginFrame extends JDialog {
         setModal(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         registrationPanel.setVisible(false);
+        choicePanel.setVisible(false);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,7 +47,8 @@ public class LoginFrame extends JDialog {
                     user = getAuthenticatedUser(username, password);
                     if (user.username != null && user.password != null) {
                         MySQLConnect.connectedUSer = user;
-                        dispose();
+                        loginPanel.setVisible(false);
+                        choicePanel.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(LoginFrame.this,
                                 "Wrong username or password.", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -81,7 +85,28 @@ public class LoginFrame extends JDialog {
                 }
             }
         });
+
+        createNewShipButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logger.info("Create ship button pressed.");
+                dispose();
+                ConfigFrame conf = new ConfigFrame();
+            }
+        });
+
+        checkOrdersButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logger.info("Check orders button pressed");
+                dispose();
+                SavedShipsFrame savedShipsFrame = new SavedShipsFrame();
+            }
+        });
+
+
         setVisible(true);
+
     }
 
     public Users user;
@@ -104,11 +129,11 @@ public class LoginFrame extends JDialog {
         return user;
     }
 
-    private void registerUser(String programUsername, String programPassword){
+    private void registerUser(String programUsername, String programPassword) {
         try {
             logger.info(programPassword);
             logger.info(programUsername);
-            String sql = "INSERT INTO users (username, password) VALUES('"+programUsername+"','"+programPassword+"');";
+            String sql = "INSERT INTO users (username, password) VALUES('" + programUsername + "','" + programPassword + "');";
             logger.info(sql);
             MySQLConnect.modifyDatabase(sql);
         } catch (Exception e) {
