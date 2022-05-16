@@ -6,25 +6,31 @@ public class Industrial extends SpaceshipAbstract {
     public Industrial() {
         this.setPrice(650000);
         this.setConsumption(230);
+        this.setType("industrial");
     }
 
     @Override
-    protected void setConsumption(int consumption) {
+    public void setConsumption(int consumption) {
         super.consumption = consumption;
     }
 
     @Override
-    protected void setQuantum_drive(int quantum_drive) {
+    public void setQuantum_drive(int quantum_drive) {
         super.quantum_drive = quantum_drive;
     }
 
     @Override
-    protected void setPower_plant(int power_plant) {
+    public void setPower_plant(int power_plant) {
         super.power_plant = power_plant;
     }
 
     @Override
-    protected void setPrice(int price) {
+    public void setPrice(int price) {
         super.price = price;
+    }
+
+    @Override
+    public void setType(String type) {
+        super.type = type;
     }
 }

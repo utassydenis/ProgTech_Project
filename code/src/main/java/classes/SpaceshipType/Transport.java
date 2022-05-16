@@ -6,25 +6,31 @@ public class Transport extends SpaceshipAbstract {
     public Transport() {
         this.setPrice(550000);
         this.setConsumption(175);
+        this.setType("transport");
     }
 
     @Override
-    protected void setConsumption(int consumption) {
+    public void setConsumption(int consumption) {
         super.consumption = consumption;
     }
 
     @Override
-    protected void setQuantum_drive(int quantum_drive) {
-        super.consumption = consumption;
+    public void setQuantum_drive(int quantum_drive) {
+        super.quantum_drive = quantum_drive;
     }
 
     @Override
-    protected void setPower_plant(int power_plant) {
-        super.consumption = consumption;
+    public void setPower_plant(int power_plant) {
+        super.power_plant = power_plant;
     }
 
     @Override
-    protected void setPrice(int price) {
-        super.consumption = consumption;
+    public void setPrice(int price) {
+        super.price = price;
+    }
+
+    @Override
+    public void setType(String type) {
+        super.type = type;
     }
 }

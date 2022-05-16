@@ -1,6 +1,15 @@
 package classes.Spaceship;
 
 public abstract class SpaceshipAbstract {
+
+    protected String type;
+    protected String fuel = "hydrogen";
+    protected int consumption;
+    protected int weapon;
+    protected int quantum_drive;
+    protected int power_plant;
+    protected int price;
+
     public String getFuel() {
         return fuel;
     }
@@ -41,10 +50,10 @@ public abstract class SpaceshipAbstract {
 
     protected abstract void setPrice(int price);
 
-    protected String fuel = "hydrogen";
-    protected int consumption;
-    protected int weapon;
-    protected int quantum_drive;
-    protected int power_plant;
-    protected int price;
+
+    public String getType() {
+        return type;
+    }
+
+    protected abstract void setType(String type);
 }

@@ -11,6 +11,7 @@ public class MySQLConnect {
     private static Connection connection;
 
     public static Users connectedUSer;
+
     public static ResultSet executeQuery(String sql) throws SQLException {
 
         PreparedStatement statement = connection.prepareStatement(sql);

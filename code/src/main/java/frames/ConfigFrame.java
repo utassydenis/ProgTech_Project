@@ -2,6 +2,7 @@ package frames;
 
 import classes.Spaceship.SpaceshipAbstract;
 import classes.SpaceshipType.Fighter;
+import classes.SpaceshipType.Transport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +34,7 @@ public class ConfigFrame extends JFrame {
                 TypePanel.setVisible(false);
                 SpaceshipAbstract fighter = new Fighter();
                 try {
-                    FighterConfigFrame fighterConfigFrame = new FighterConfigFrame(fighter);
+                    FighterConfigFrame fighterConfigFrame = new FighterConfigFrame((Fighter) fighter);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -45,7 +46,14 @@ public class ConfigFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 logger.info("Transport button clicked");
                 TypePanel.setVisible(false);
-                //TODO: create spaceship
+                SpaceshipAbstract transport = new Transport();
+
+                try {
+                    TransportConfigFrame transportConfigFrame = new TransportConfigFrame((Transport) transport);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                dispose();
             }
         });
         IndustrialButton.addActionListener(new ActionListener() {

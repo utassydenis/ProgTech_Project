@@ -26,7 +26,6 @@ public class LoginFrame extends JDialog {
     static Logger logger = LoggerFactory.getLogger(LoginFrame.class);
 
 
-
     public LoginFrame() {
         setTitle("Login");
         setContentPane(overall);
@@ -104,11 +103,11 @@ public class LoginFrame extends JDialog {
         return user;
     }
 
-    private void registerUser(String programUsername, String programPassword){
+    private void registerUser(String programUsername, String programPassword) {
         try {
             logger.info(programPassword);
             logger.info(programUsername);
-            String sql = "INSERT INTO users (username, password) VALUES('"+programUsername+"','"+programPassword+"');";
+            String sql = "INSERT INTO users (username, password) VALUES('" + programUsername + "','" + programPassword + "');";
             logger.info(sql);
             MySQLConnect.modifyDatabase(sql);
         } catch (Exception e) {
