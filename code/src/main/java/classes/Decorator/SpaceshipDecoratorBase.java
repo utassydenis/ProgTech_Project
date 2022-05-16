@@ -2,8 +2,7 @@ package classes.Decorator;
 
 import classes.Spaceship.SpaceshipAbstract;
 
-public abstract class SpaceshipDecoratorBase extends SpaceshipAbstract { //SpaceshipAbstract az alaposztály az adott funkciókkal
-    //ez a dekorátor osztály
+public abstract class SpaceshipDecoratorBase extends SpaceshipAbstract {
     private SpaceshipAbstract spaceship;
 
     public SpaceshipDecoratorBase(SpaceshipAbstract s) {
@@ -11,8 +10,18 @@ public abstract class SpaceshipDecoratorBase extends SpaceshipAbstract { //Space
     }
 
     @Override
+    public String getFuel() {
+        return spaceship.getFuel();
+    }
+
+    @Override
     public int getConsumption() {
         return spaceship.getConsumption();
+    }
+
+    @Override
+    public int getWeapon() {
+        return spaceship.getWeapon();
     }
 
     @Override
@@ -26,12 +35,14 @@ public abstract class SpaceshipDecoratorBase extends SpaceshipAbstract { //Space
     }
 
     @Override
-    public int getWeapon() {
-        return spaceship.getWeapon();
+    public int getPrice() {
+        return spaceship.getPrice();
     }
 
     @Override
-    public int getPrice() {
-        return super.price;
+    public String getType() {
+        return spaceship.getType();
     }
+
+
 }

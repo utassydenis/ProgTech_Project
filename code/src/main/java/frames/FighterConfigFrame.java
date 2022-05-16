@@ -1,5 +1,6 @@
 package frames;
 
+import classes.Decorator.Offer;
 import classes.Spaceship.SpaceshipAbstract;
 import classes.SpaceshipModule.Power_plant;
 import classes.SpaceshipModule.Quantum_drive;
@@ -33,6 +34,7 @@ public class FighterConfigFrame extends JFrame {
     private JLabel WeaponDPSLabel;
     private JLabel WeaponPriceLabel;
     private JButton OrderButton;
+    private JTextField couponTextField;
     private SpaceshipAbstract fighter;
     private static Power_plant selectedPower_plant;
     private static Quantum_drive selectedQuantum_drive;
@@ -100,7 +102,6 @@ public class FighterConfigFrame extends JFrame {
         OrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 fighter.setPrice(fighter.getPrice()
                         + selectedPower_plant.getPrice()
                         + selectedQuantum_drive.getPrice()
@@ -108,6 +109,21 @@ public class FighterConfigFrame extends JFrame {
                 fighter.setPower_plant(selectedPower_plant.getId());
                 fighter.setQuantum_drive(selectedQuantum_drive.getId());
                 fighter.setWeapon(selectedWeapon.getId());
+
+
+                if (couponTextField.getText().equals("BARNA")) {
+                    Offer disc = new Offer(fighter);
+                    disc.setDiscount(25);
+                    fighter.setPrice(disc.getPrice());
+                } else if (couponTextField.getText().equals("DENES")) {
+                    Offer disc = new Offer(fighter);
+                    disc.setDiscount(10);
+                    fighter.setPrice(disc.getPrice());
+                } else if (couponTextField.getText().equals("EDE")) {
+                    Offer disc = new Offer(fighter);
+                    disc.setDiscount(100);
+                    fighter.setPrice(disc.getPrice());
+                }
 
                 String spaceship = "INSERT INTO spaceships (" +
                         " type," +
@@ -134,8 +150,9 @@ public class FighterConfigFrame extends JFrame {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-
                 dispose();
+                LoginFrame log = new LoginFrame(false);
+
             }
         });
     }

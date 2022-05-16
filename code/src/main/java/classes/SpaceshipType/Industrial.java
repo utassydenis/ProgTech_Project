@@ -10,8 +10,28 @@ public class Industrial extends SpaceshipAbstract {
     }
 
     @Override
+    public String getFuel() {
+        return super.fuel;
+    }
+
+    @Override
+    public int getConsumption() {
+        return super.consumption;
+    }
+
+    @Override
     public void setConsumption(int consumption) {
         super.consumption = consumption;
+    }
+
+    @Override
+    public int getWeapon() {
+        return super.weapon;
+    }
+
+    @Override
+    public int getQuantum_drive() {
+        return super.quantum_drive;
     }
 
     @Override
@@ -20,13 +40,28 @@ public class Industrial extends SpaceshipAbstract {
     }
 
     @Override
+    public int getPower_plant() {
+        return super.power_plant;
+    }
+
+    @Override
     public void setPower_plant(int power_plant) {
         super.power_plant = power_plant;
     }
 
     @Override
+    public int getPrice() {
+        return super.price;
+    }
+
+    @Override
     public void setPrice(int price) {
         super.price = price;
+    }
+
+    @Override
+    public String getType() {
+        return super.type;
     }
 
     @Override

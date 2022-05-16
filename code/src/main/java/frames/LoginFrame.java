@@ -30,14 +30,19 @@ public class LoginFrame extends JDialog {
     static Logger logger = LoggerFactory.getLogger(LoginFrame.class);
 
 
-    public LoginFrame() {
+    public LoginFrame(boolean first) {
         setTitle("Login");
         setContentPane(overall);
         setSize(800, 600);
         setModal(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        registrationPanel.setVisible(false);
-        choicePanel.setVisible(false);
+        if (first) {
+            registrationPanel.setVisible(false);
+            choicePanel.setVisible(false);
+        } else {
+            loginPanel.setVisible(false);
+            registrationPanel.setVisible(false);
+        }
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

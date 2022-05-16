@@ -1,9 +1,9 @@
 package frames;
 
+import classes.Decorator.Offer;
 import classes.Spaceship.SpaceshipAbstract;
 import classes.SpaceshipModule.Power_plant;
 import classes.SpaceshipModule.Quantum_drive;
-import classes.SpaceshipModule.Weapon;
 import classes.SpaceshipType.Transport;
 import database.MySQLConnect;
 import org.slf4j.Logger;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransportConfigFrame extends JFrame{
+public class TransportConfigFrame extends JFrame {
     private JPanel TransportConfigPanel;
     private JLabel ConsumptionLabel;
     private JComboBox QuantumComboBox;
@@ -29,6 +29,7 @@ public class TransportConfigFrame extends JFrame{
     private JLabel PowerLabel;
     private JLabel PowerPriceLabel;
     private JButton OrderButton;
+    private JTextField couponTextField;
 
     private SpaceshipAbstract transport;
     private static Power_plant selectedPower_plant;
@@ -87,6 +88,22 @@ public class TransportConfigFrame extends JFrame{
                 transport.setPower_plant(selectedPower_plant.getId());
                 transport.setQuantum_drive(selectedQuantum_drive.getId());
 
+
+                if (couponTextField.getText().equals("BARNA")) {
+                    Offer disc = new Offer(transport);
+                    disc.setDiscount(25);
+                    transport.setPrice(disc.getPrice());
+                } else if (couponTextField.getText().equals("DENES")) {
+                    Offer disc = new Offer(transport);
+                    disc.setDiscount(10);
+                    transport.setPrice(disc.getPrice());
+                } else if (couponTextField.getText().equals("EDE")) {
+                    Offer disc = new Offer(transport);
+                    disc.setDiscount(100);
+                    transport.setPrice(disc.getPrice());
+                }
+
+
                 String spaceship = "INSERT INTO spaceships (" +
                         " type," +
                         " fuel," +
@@ -103,7 +120,7 @@ public class TransportConfigFrame extends JFrame{
                         + 9 + ","
                         + transport.getPower_plant() + ","
                         + transport.getQuantum_drive() + "," +
-                        MySQLConnect.connectedUSer.id+");";
+                        MySQLConnect.connectedUSer.id + ");";
                 logger.info(spaceship);
                 try {
                     MySQLConnect.modifyDatabase(spaceship);
@@ -111,8 +128,9 @@ public class TransportConfigFrame extends JFrame{
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-
                 dispose();
+                LoginFrame log = new LoginFrame(false);
+
             }
         });
     }
