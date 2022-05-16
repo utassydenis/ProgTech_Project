@@ -8,7 +8,6 @@ public class App {
     public static void main(String[] args) {
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("project started");
-        ConfigFrame frame = new ConfigFrame();
         LoginFrame loginFrame = new LoginFrame();
         logger.info("window initialized");
 
