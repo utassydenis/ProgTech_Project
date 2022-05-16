@@ -44,6 +44,7 @@ public class FighterConfigFrame extends JFrame {
 
     public FighterConfigFrame(Fighter fighter) throws SQLException {
         Logger logger = LoggerFactory.getLogger(ConfigFrame.class);
+        logger.info("fighter frame initialized");
         setContentPane(FighterConfigPanel);
         setSize(800, 600);
         setTitle("Spaceship Configurator");
@@ -61,6 +62,7 @@ public class FighterConfigFrame extends JFrame {
                     QuantumPriceLabel.setText(Integer.toString(selectedQuantum_drive.getPrice()));
                     SpeedLabel.setText(Integer.toString(selectedQuantum_drive.getSpeed()));
                     setPriceLabel();
+                    logger.info("new quantum_drive selected");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -74,6 +76,7 @@ public class FighterConfigFrame extends JFrame {
                     PowerPriceLabel.setText(Integer.toString(selectedPower_plant.getPrice()));
                     PowerLabel.setText(Integer.toString(selectedPower_plant.getPower()));
                     setPriceLabel();
+                    logger.info("new power_plant selected");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -88,6 +91,7 @@ public class FighterConfigFrame extends JFrame {
                     WeaponPriceLabel.setText(Integer.toString(selectedWeapon.getPrice()));
                     WeaponTypeLabel.setText(selectedWeapon.getType());
                     setPriceLabel();
+                    logger.info("new weapon selected");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -121,9 +125,12 @@ public class FighterConfigFrame extends JFrame {
                         + fighter.getWeapon() + ","
                         + fighter.getPower_plant() + ","
                         + fighter.getQuantum_drive() + "," +
-                        MySQLConnect.connectedUSer.id+");";
+                        MySQLConnect.connectedUSer.id + ");";
+                logger.info(spaceship);
                 try {
                     MySQLConnect.modifyDatabase(spaceship);
+
+                    logger.info("new fighter added to database");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -147,7 +154,7 @@ public class FighterConfigFrame extends JFrame {
         WeaponDPSLabel.setText(Integer.toString(weapons.get(0).getDps()));
         WeaponPriceLabel.setText(Integer.toString(weapons.get(0).getPrice()));
         WeaponTypeLabel.setText(weapons.get(0).getType());
-
+        logger.info("data loaded to UI");
     }
 
     private void addItemsToPowerComboBox() throws SQLException {
@@ -223,12 +230,14 @@ public class FighterConfigFrame extends JFrame {
                         + selectedPower_plant.getPrice()
                         + selectedQuantum_drive.getPrice()
                         + selectedWeapon.getPrice()));
+        logger.info("new price set");
     }
 
     private void setDefaultComponents() {
         selectedQuantum_drive = quantum_drives.get(0);
         selectedPower_plant = power_plants.get(0);
         selectedWeapon = weapons.get(0);
+        logger.info("default components added");
     }
 
 }

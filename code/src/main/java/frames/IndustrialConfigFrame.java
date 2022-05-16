@@ -39,6 +39,7 @@ public class IndustrialConfigFrame extends JFrame{
 
     public IndustrialConfigFrame(Industrial industrial) throws SQLException {
         Logger logger = LoggerFactory.getLogger(ConfigFrame.class);
+        logger.info("industrial frame initialized");
         setContentPane(IndustrialConfigPanel);
         setSize(800, 600);
         setTitle("Spaceship Configurator");
@@ -56,6 +57,7 @@ public class IndustrialConfigFrame extends JFrame{
                     QuantumPriceLabel.setText(Integer.toString(selectedQuantum_drive.getPrice()));
                     SpeedLabel.setText(Integer.toString(selectedQuantum_drive.getSpeed()));
                     setPriceLabel();
+                    logger.info("new quantum_drive selected");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -69,6 +71,7 @@ public class IndustrialConfigFrame extends JFrame{
                     PowerPriceLabel.setText(Integer.toString(selectedPower_plant.getPrice()));
                     PowerLabel.setText(Integer.toString(selectedPower_plant.getPower()));
                     setPriceLabel();
+                    logger.info("new power_plant selected");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -101,8 +104,10 @@ public class IndustrialConfigFrame extends JFrame{
                         + industrial.getPower_plant() + ","
                         + industrial.getQuantum_drive() + "," +
                         MySQLConnect.connectedUSer.id+");";
+                logger.info(spaceship);
                 try {
                     MySQLConnect.modifyDatabase(spaceship);
+                    logger.info("new industrial added to database");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -122,6 +127,7 @@ public class IndustrialConfigFrame extends JFrame{
         SpeedLabel.setText(Integer.toString(quantum_drives.get(0).getSpeed()));
         PowerPriceLabel.setText(Integer.toString(power_plants.get(0).getPrice()));
         PowerLabel.setText(Integer.toString(power_plants.get(0).getPower()));
+        logger.info("data loaded to UI");
 
     }
 
@@ -175,11 +181,13 @@ public class IndustrialConfigFrame extends JFrame{
                 industrial.getPrice()
                         + selectedPower_plant.getPrice()
                         + selectedQuantum_drive.getPrice()));
+        logger.info("new price set");
     }
 
     private void setDefaultComponents() {
         selectedQuantum_drive = quantum_drives.get(0);
-        selectedPower_plant = power_plants.get(0);;
+        selectedPower_plant = power_plants.get(0);
+        logger.info("default components added");
     }
 
 }
