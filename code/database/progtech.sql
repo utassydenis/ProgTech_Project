@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Máj 14. 10:49
+-- Létrehozás ideje: 2022. Máj 16. 20:17
 -- Kiszolgáló verziója: 10.4.22-MariaDB
 -- PHP verzió: 8.1.2
 
@@ -20,18 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `progtech`
 --
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `orders`
---
-
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `sid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -96,8 +84,16 @@ CREATE TABLE `spaceships` (
   `price` int(11) DEFAULT NULL,
   `weapon` int(11) DEFAULT NULL,
   `power_plant` int(11) DEFAULT NULL,
-  `quantum_drive` int(11) DEFAULT NULL
+  `quantum_drive` int(11) DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `spaceships`
+--
+
+INSERT INTO `spaceships` (`id`, `type`, `fuel`, `consumption`, `price`, `weapon`, `power_plant`, `quantum_drive`, `uid`) VALUES
+(1, 'fighter', 'hydrogen', 70, 482300, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -137,19 +133,12 @@ INSERT INTO `weapons` (`id`, `name`, `dps`, `type`, `price`) VALUES
 (5, 'Deadbolt III', 625, 'Ballistic Cannon', 18240),
 (6, 'Attrition-3', 500, 'Laser Repeater', 12000),
 (7, 'CF-337 Panther', 500, 'Laser Repeater', 8925),
-(8, 'Suckerpunch-XL', 338, 'Distortion Cannon', 10050);
+(8, 'Suckerpunch-XL', 338, 'Distortion Cannon', 10050),
+(9, 'No weapon', 0, 'none', 0);
 
 --
 -- Indexek a kiírt táblákhoz
 --
-
---
--- A tábla indexei `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `uid` (`uid`),
-  ADD KEY `sid` (`sid`);
 
 --
 -- A tábla indexei `power_plants`
@@ -189,12 +178,6 @@ ALTER TABLE `weapons`
 --
 
 --
--- AUTO_INCREMENT a táblához `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT a táblához `power_plants`
 --
 ALTER TABLE `power_plants`
@@ -210,7 +193,7 @@ ALTER TABLE `quantum_drives`
 -- AUTO_INCREMENT a táblához `spaceships`
 --
 ALTER TABLE `spaceships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT a táblához `users`
@@ -222,18 +205,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `weapons`
 --
 ALTER TABLE `weapons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Megkötések a kiírt táblákhoz
 --
-
---
--- Megkötések a táblához `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`sid`) REFERENCES `spaceships` (`id`) ON DELETE CASCADE;
 
 --
 -- Megkötések a táblához `spaceships`

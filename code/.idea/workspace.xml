@@ -5,34 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc0e5110-f4c4-4425-8c99-26f88f39b6e7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/frames/FighterConfigFrame.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frames/FighterConfigFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frames/TransportConfigFrame.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frames/TransportConfigFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/progtech.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/progtech.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/classes/Spaceship/SpaceshipAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/Spaceship/SpaceshipAbstract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/classes/SpaceshipModule/Power_plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/SpaceshipModule/Power_plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classes/SpaceshipModule/Quantum_drive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/SpaceshipModule/Quantum_drive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/classes/SpaceshipModule/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/SpaceshipModule/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/classes/SpaceshipType/Fighter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/SpaceshipType/Fighter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/classes/SpaceshipType/Industrial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/SpaceshipType/Industrial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/classes/SpaceshipType/Transport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/classes/SpaceshipType/Transport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frames/ConfigFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frames/ConfigFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/MySQLConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/MySQLConnect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frames/ConfigFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frames/ConfigFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frames/FighterConfigFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frames/FighterConfigFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frames/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frames/LoginFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Frames/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/LoginFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/classes/Spaceship/SpaceshipAbstract.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/Spaceship/SpaceshipAbstract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipModule/Power_plant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipModule/Power_plant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipModule/Quantum_drive.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipModule/Quantum_drive.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipModule/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipModule/Weapon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Fighter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Fighter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Industrial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Industrial.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Transport.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Transport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/classes/Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/Users.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/database/MySQLConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/MySQLConnect.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,12 +63,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/database" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GIT\ProgTech_Project\code\src\main\java\database" />
+      <recent name="D:\GIT\ProgTech_Project\code\src\main\java\frames" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GIT\ProgTech_Project\code\src\main\java\Frames" />
     </key>
@@ -103,6 +106,8 @@
       <workItem from="1652637632790" duration="1714000" />
       <workItem from="1652688016312" duration="10524000" />
       <workItem from="1652701037043" duration="11350000" />
+      <workItem from="1652712584021" duration="6360000" />
+      <workItem from="1652719204032" duration="5355000" />
     </task>
     <servers />
   </component>
