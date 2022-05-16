@@ -26,7 +26,6 @@ public class MySQLConnect {
 
         statement.executeUpdate();
 
-        connection.close();
     }
 
     public static void connectDatabase() throws SQLException {
