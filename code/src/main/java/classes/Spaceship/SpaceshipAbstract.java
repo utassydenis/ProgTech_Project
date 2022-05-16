@@ -23,8 +23,6 @@ public abstract class SpaceshipAbstract {
         this.weapon = 0;
     }
 
-    ;
-
     public int getQuantum_drive() {
         return quantum_drive;
     }

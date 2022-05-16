@@ -12,7 +12,8 @@ public class App {
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.info("project started");
         MySQLConnect.connectDatabase();
-        LoginFrame loginFrame = new LoginFrame();
+        //LoginFrame loginFrame = new LoginFrame();
+        ConfigFrame configFrame = new ConfigFrame();
         logger.info("window initialized");
 
 

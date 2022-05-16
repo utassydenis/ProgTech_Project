@@ -6,6 +6,7 @@ public class Weapon {
     private String name;
     private int dps;
     private String type;
+    private int price;
 
     public int getId() {
         return id;
@@ -47,5 +48,4 @@ public class Weapon {
         this.price = price;
     }
 
-    private int price;
 }

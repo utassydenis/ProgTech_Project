@@ -4,7 +4,8 @@ import classes.Spaceship.SpaceshipAbstract;
 
 public class Transport extends SpaceshipAbstract {
     public Transport() {
-        super.price=550000;
+        this.setPrice(550000);
+        this.setConsumption(175);
     }
 
     @Override

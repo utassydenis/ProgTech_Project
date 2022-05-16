@@ -6,7 +6,8 @@ import classes.Spaceship.SpaceshipAbstract;
 public class Fighter extends SpaceshipAbstract {
 
     public Fighter() {
-        super.price=400000;
+        this.setPrice(400000);
+        this.setConsumption(70);
     }
 
     @Override

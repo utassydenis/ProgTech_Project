@@ -4,6 +4,8 @@ public class Power_plant {
 
    private int id;
    private String name;
+   private int power;
+   private int price;
 
    public int getId() {
       return id;
@@ -37,6 +39,4 @@ public class Power_plant {
       this.price = price;
    }
 
-   private int power;
-   private int price;
 }

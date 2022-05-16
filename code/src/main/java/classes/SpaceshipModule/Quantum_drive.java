@@ -4,6 +4,7 @@ public class Quantum_drive {
     private int id;
     private String name;
     private int speed;
+    private int price;
 
     public int getId() {
         return id;
@@ -37,5 +38,4 @@ public class Quantum_drive {
         this.price = price;
     }
 
-    private int price;
 }

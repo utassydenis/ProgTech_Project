@@ -4,7 +4,8 @@ import classes.Spaceship.SpaceshipAbstract;
 
 public class Industrial extends SpaceshipAbstract {
     public Industrial() {
-        super.price=650000;
+        this.setPrice(650000);
+        this.setConsumption(230);
     }
 
     @Override

@@ -8,14 +8,13 @@ import org.slf4j.LoggerFactory;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class ConfigFrame extends JFrame {
     private JButton FighterButton;
     private JButton TransportButton;
     private JButton IndustrialButton;
     private JPanel ConfPanel;
-    private JComboBox WeaponComboBox;
-    private JPanel ConfigPanel;
     private JPanel TypePanel;
 
     public ConfigFrame() {
@@ -26,16 +25,19 @@ public class ConfigFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
-        ConfigPanel.setVisible(false);
 
         FighterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 logger.info("Fighter button clicked");
                 TypePanel.setVisible(false);
-                ConfigPanel.setVisible(true);
                 SpaceshipAbstract fighter = new Fighter();
-                //TODO: create spaceship
+                try {
+                    FighterConfigFrame fighterConfigFrame = new FighterConfigFrame(fighter);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                dispose();
             }
         });
         TransportButton.addActionListener(new ActionListener() {
@@ -43,7 +45,6 @@ public class ConfigFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 logger.info("Transport button clicked");
                 TypePanel.setVisible(false);
-                ConfigPanel.setVisible(true);
                 //TODO: create spaceship
             }
         });
@@ -52,7 +53,6 @@ public class ConfigFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 logger.info("Industrial button clicked");
                 TypePanel.setVisible(false);
-                ConfigPanel.setVisible(true);
                 //TODO: create spaceship
             }
         });
