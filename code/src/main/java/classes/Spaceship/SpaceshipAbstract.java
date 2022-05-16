@@ -43,7 +43,7 @@ public abstract class SpaceshipAbstract {
 
     protected abstract void setPrice(int price);
 
-    protected String fuel;
+    protected String fuel = "hydrogen";
     protected int consumption;
     protected int weapon;
     protected int quantum_drive;

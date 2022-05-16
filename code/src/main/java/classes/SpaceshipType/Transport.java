@@ -3,6 +3,10 @@ package classes.SpaceshipType;
 import classes.Spaceship.SpaceshipAbstract;
 
 public class Transport extends SpaceshipAbstract {
+    public Transport() {
+        super.price=550000;
+    }
+
     @Override
     protected void setConsumption(int consumption) {
         super.consumption = consumption;

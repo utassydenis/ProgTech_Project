@@ -6,25 +6,27 @@ public class MySQLConnect {
     private static String jdbcURL = "jdbc:mysql://localhost:3306/progtech";
     private static String username = "root";
     private static String password = "";
+    private static Connection connection;
 
     public static ResultSet executeQuery(String sql) throws SQLException {
 
-        Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+        PreparedStatement statement = connection.prepareStatement(sql);
 
-        Statement statement = connection.createStatement();
-
-        ResultSet result = statement.executeQuery(sql);
-
-        connection.close();
+        ResultSet result = statement.executeQuery();
 
         return result;
     }
 
     public static void modifyDatabase(String sql) throws SQLException {
-        Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 
-        Statement statement = connection.createStatement();
+        PreparedStatement statement = connection.prepareStatement(sql);
 
-        statement.executeUpdate(sql);
+        statement.executeUpdate();
+
+        connection.close();
+    }
+
+    public static void connectDatabase() throws SQLException {
+        connection = DriverManager.getConnection(jdbcURL, username, password);
     }
 }

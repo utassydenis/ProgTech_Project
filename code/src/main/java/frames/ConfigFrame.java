@@ -1,5 +1,7 @@
 package frames;
 
+import classes.Spaceship.SpaceshipAbstract;
+import classes.SpaceshipType.Fighter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +34,7 @@ public class ConfigFrame extends JFrame {
                 logger.info("Fighter button clicked");
                 TypePanel.setVisible(false);
                 ConfigPanel.setVisible(true);
+                SpaceshipAbstract fighter = new Fighter();
                 //TODO: create spaceship
             }
         });

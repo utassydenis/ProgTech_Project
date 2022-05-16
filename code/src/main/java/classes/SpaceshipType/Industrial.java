@@ -3,6 +3,10 @@ package classes.SpaceshipType;
 import classes.Spaceship.SpaceshipAbstract;
 
 public class Industrial extends SpaceshipAbstract {
+    public Industrial() {
+        super.price=650000;
+    }
+
     @Override
     protected void setConsumption(int consumption) {
         super.consumption = consumption;

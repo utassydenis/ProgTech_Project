@@ -5,6 +5,9 @@ import classes.Spaceship.SpaceshipAbstract;
 
 public class Fighter extends SpaceshipAbstract {
 
+    public Fighter() {
+        super.price=400000;
+    }
 
     @Override
     protected void setConsumption(int consumption) {
