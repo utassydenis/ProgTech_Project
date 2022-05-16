@@ -121,7 +121,7 @@ public class FighterConfigFrame extends JFrame {
                         + fighter.getWeapon() + ","
                         + fighter.getPower_plant() + ","
                         + fighter.getQuantum_drive() + "," +
-                        1+");";
+                        MySQLConnect.connectedUSer.id+");";
                 try {
                     MySQLConnect.modifyDatabase(spaceship);
                 } catch (SQLException ex) {

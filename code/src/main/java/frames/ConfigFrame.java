@@ -2,6 +2,7 @@ package frames;
 
 import classes.Spaceship.SpaceshipAbstract;
 import classes.SpaceshipType.Fighter;
+import classes.SpaceshipType.Industrial;
 import classes.SpaceshipType.Transport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +62,14 @@ public class ConfigFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 logger.info("Industrial button clicked");
                 TypePanel.setVisible(false);
-                //TODO: create spaceship
+                SpaceshipAbstract industrial = new Industrial();
+
+                try {
+                    IndustrialConfigFrame industrialConfigFrame = new IndustrialConfigFrame((Industrial) industrial);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                dispose();
             }
         });
     }

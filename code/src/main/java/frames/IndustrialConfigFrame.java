@@ -3,7 +3,7 @@ package frames;
 import classes.Spaceship.SpaceshipAbstract;
 import classes.SpaceshipModule.Power_plant;
 import classes.SpaceshipModule.Quantum_drive;
-import classes.SpaceshipModule.Weapon;
+import classes.SpaceshipType.Industrial;
 import classes.SpaceshipType.Transport;
 import database.MySQLConnect;
 import org.slf4j.Logger;
@@ -17,8 +17,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransportConfigFrame extends JFrame{
-    private JPanel TransportConfigPanel;
+public class IndustrialConfigFrame extends JFrame{
+    private JPanel IndustrialConfigPanel;
     private JLabel ConsumptionLabel;
     private JComboBox QuantumComboBox;
     private JComboBox PowerComboBox;
@@ -30,21 +30,21 @@ public class TransportConfigFrame extends JFrame{
     private JLabel PowerPriceLabel;
     private JButton OrderButton;
 
-    private SpaceshipAbstract transport;
+    private SpaceshipAbstract industrial;
     private static Power_plant selectedPower_plant;
     private static Quantum_drive selectedQuantum_drive;
     Logger logger = LoggerFactory.getLogger(FighterConfigFrame.class);
     private List<Power_plant> power_plants = new ArrayList<>();
     private List<Quantum_drive> quantum_drives = new ArrayList<>();
 
-    public TransportConfigFrame(Transport transport) throws SQLException {
+    public IndustrialConfigFrame(Industrial industrial) throws SQLException {
         Logger logger = LoggerFactory.getLogger(ConfigFrame.class);
-        setContentPane(TransportConfigPanel);
+        setContentPane(IndustrialConfigPanel);
         setSize(800, 600);
         setTitle("Spaceship Configurator");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
-        this.transport = transport;
+        this.industrial = industrial;
         loadDataToUI();
         setDefaultComponents();
         setPriceLabel();
@@ -78,11 +78,11 @@ public class TransportConfigFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                transport.setPrice(transport.getPrice()
+                industrial.setPrice(industrial.getPrice()
                         + selectedPower_plant.getPrice()
                         + selectedQuantum_drive.getPrice());
-                transport.setPower_plant(selectedPower_plant.getId());
-                transport.setQuantum_drive(selectedQuantum_drive.getId());
+                industrial.setPower_plant(selectedPower_plant.getId());
+                industrial.setQuantum_drive(selectedQuantum_drive.getId());
 
                 String spaceship = "INSERT INTO spaceships (" +
                         " type," +
@@ -93,13 +93,13 @@ public class TransportConfigFrame extends JFrame{
                         " power_plant," +
                         "quantum_drive," +
                         "uid) " +
-                        "VALUES ('" + transport.getType() + "','"
-                        + transport.getFuel() + "',"
-                        + transport.getConsumption() + ","
-                        + transport.getPrice() + ","
+                        "VALUES ('" + industrial.getType() + "','"
+                        + industrial.getFuel() + "',"
+                        + industrial.getConsumption() + ","
+                        + industrial.getPrice() + ","
                         + 9 + ","
-                        + transport.getPower_plant() + ","
-                        + transport.getQuantum_drive() + "," +
+                        + industrial.getPower_plant() + ","
+                        + industrial.getQuantum_drive() + "," +
                         MySQLConnect.connectedUSer.id+");";
                 try {
                     MySQLConnect.modifyDatabase(spaceship);
@@ -113,9 +113,9 @@ public class TransportConfigFrame extends JFrame{
     }
 
     private void loadDataToUI() throws SQLException {
-        PriceLabel.setText(Integer.toString(transport.getPrice()));
-        ConsumptionLabel.setText(Integer.toString(transport.getConsumption()));
-        FuelLabel.setText(transport.getFuel());
+        PriceLabel.setText(Integer.toString(industrial.getPrice()));
+        ConsumptionLabel.setText(Integer.toString(industrial.getConsumption()));
+        FuelLabel.setText(industrial.getFuel());
         addItemsToPowerComboBox();
         addItemsToQuantumComboBox();
         QuantumPriceLabel.setText(Integer.toString(quantum_drives.get(0).getPrice()));
@@ -172,7 +172,7 @@ public class TransportConfigFrame extends JFrame{
 
     private void setPriceLabel() {
         PriceLabel.setText(Integer.toString(
-                transport.getPrice()
+                industrial.getPrice()
                         + selectedPower_plant.getPrice()
                         + selectedQuantum_drive.getPrice()));
     }
