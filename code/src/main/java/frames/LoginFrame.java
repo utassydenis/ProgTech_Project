@@ -16,17 +16,24 @@ public class LoginFrame extends JDialog {
     private JTextField usernameField;
     private JTextField passwordField;
     private JButton loginButton;
-    private JButton guestButton;
+    private JButton registrationButton;
     private JPanel loginPanel;
+    private JPanel registrationPanel;
+    private JTextField registrationUsernameField;
+    private JTextField registrationPasswordField;
+    private JButton registrationRegistrationButton;
+    private JPanel overall;
     static Logger logger = LoggerFactory.getLogger(LoginFrame.class);
+
+
 
     public LoginFrame() {
         setTitle("Login");
-        setContentPane(loginPanel);
+        setContentPane(overall);
         setSize(800, 600);
         setModal(true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+        registrationPanel.setVisible(false);
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,6 +43,7 @@ public class LoginFrame extends JDialog {
                     String password = passwordField.getText();
                     user = getAuthenticatedUser(username, password);
                     if (user.username != null && user.password != null) {
+                        MySQLConnect.connectedUSer = user;
                         dispose();
                     } else {
                         JOptionPane.showMessageDialog(LoginFrame.this,
@@ -48,14 +56,31 @@ public class LoginFrame extends JDialog {
             }
         });
 
-        guestButton.addActionListener(new ActionListener() {
+        registrationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                logger.info("Guest button clicked.");
-                dispose();
+                logger.info("Registration button clicked.");
+                loginPanel.setVisible(false);
+                registrationPanel.setVisible(true);
             }
         });
 
+        registrationRegistrationButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logger.info("Registration button clicked on registration.");
+                if (!registrationUsernameField.getText().isEmpty() && !registrationUsernameField.getText().isEmpty()) {
+                    String username = registrationUsernameField.getText();
+                    String password = registrationPasswordField.getText();
+                    registerUser(username, password);
+                    registrationPanel.setVisible(false);
+                    loginPanel.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(LoginFrame.this,
+                            "Please type in a username and password", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
         setVisible(true);
     }
 
@@ -71,10 +96,23 @@ public class LoginFrame extends JDialog {
             if (resultSet.next()) {
                 user.username = resultSet.getString("username");
                 user.password = resultSet.getString("password");
+                user.id = resultSet.getInt("id");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return user;
+    }
+
+    private void registerUser(String programUsername, String programPassword){
+        try {
+            logger.info(programPassword);
+            logger.info(programUsername);
+            String sql = "INSERT INTO users (username, password) VALUES('"+programUsername+"','"+programPassword+"');";
+            logger.info(sql);
+            MySQLConnect.modifyDatabase(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
