@@ -1,6 +1,4 @@
-import frames.ConfigFrame;
 import frames.LoginFrame;
-import frames.SavedShipsFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import database.MySQLConnect;
@@ -15,7 +13,6 @@ public class App {
         MySQLConnect.connectDatabase();
         LoginFrame loginFrame = new LoginFrame();
         logger.info("window initialized");
-
 
     }
 }
