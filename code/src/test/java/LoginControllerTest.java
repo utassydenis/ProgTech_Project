@@ -31,5 +31,4 @@ public class LoginControllerTest {
         Assertions.assertEquals("admin",testUser.username);
     }
 
-
 }
