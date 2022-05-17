@@ -1,11 +1,13 @@
 package frames;
 
+import classes.Controller.FighterController;
 import classes.Decorator.Offer;
 import classes.Spaceship.Spaceship;
 import classes.SpaceshipModule.Power_plant;
 import classes.SpaceshipModule.Quantum_drive;
 import classes.SpaceshipModule.Weapon;
 import classes.SpaceshipType.Fighter;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import database.MySQLConnect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,7 +63,8 @@ public class FighterConfigFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    setSelectedQuantum_drive();
+                    selectedQuantum_drive=FighterController.setSelectedQuantum_drive(
+                            QuantumComboBox.getSelectedItem().toString(),quantum_drives);
                     QuantumPriceLabel.setText(Integer.toString(selectedQuantum_drive.getPrice()));
                     SpeedLabel.setText(Integer.toString(selectedQuantum_drive.getSpeed()));
                     setPriceLabel();
@@ -75,7 +78,8 @@ public class FighterConfigFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    setSelectedPower_plant();
+                    selectedPower_plant=FighterController.setSelectedPower_plant(
+                            PowerComboBox.getSelectedItem().toString(),power_plants);
                     PowerPriceLabel.setText(Integer.toString(selectedPower_plant.getPrice()));
                     PowerLabel.setText(Integer.toString(selectedPower_plant.getPower()));
                     setPriceLabel();
@@ -89,7 +93,8 @@ public class FighterConfigFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    setSelectedWeapon();
+                    selectedWeapon=FighterController.setSelectedWeapon(
+                            WeaponComboBox.getSelectedItem().toString(),weapons);
                     WeaponDPSLabel.setText(Integer.toString(selectedWeapon.getDps()));
                     WeaponPriceLabel.setText(Integer.toString(selectedWeapon.getPrice()));
                     WeaponTypeLabel.setText(selectedWeapon.getType());
@@ -103,62 +108,7 @@ public class FighterConfigFrame extends JFrame {
         OrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fighter.setPrice(fighter.getPrice()
-                        + selectedPower_plant.getPrice()
-                        + selectedQuantum_drive.getPrice()
-                        + selectedWeapon.getPrice());
-                fighter.setPower_plant(selectedPower_plant.getId());
-                fighter.setQuantum_drive(selectedQuantum_drive.getId());
-                fighter.setWeapon(selectedWeapon.getId());
-
-
-                if (couponTextField.getText().equals("BARNA")) {
-                    Offer disc = new Offer(fighter);
-                    disc.setDiscount(25);
-                    fighter.setPrice(disc.getPrice());
-                } else if (couponTextField.getText().equals("DENES")) {
-                    Offer disc = new Offer(fighter);
-                    disc.setDiscount(10);
-                    fighter.setPrice(disc.getPrice());
-                } else if (couponTextField.getText().equals("EDE")) {
-                    Offer disc = new Offer(fighter);
-                    disc.setDiscount(100);
-                    fighter.setPrice(disc.getPrice());
-                }
-                if(efficientEngineCheckBox.isSelected()){
-                    Offer efficient = new Offer(fighter);
-                    efficient.setEfficiency(10);
-                    fighter.setConsumption(efficient.getConsumption());
-                }
-
-                String spaceship = "INSERT INTO spaceships (" +
-                        " type," +
-                        " fuel," +
-                        " consumption," +
-                        " price," +
-                        " weapon," +
-                        " power_plant," +
-                        "quantum_drive," +
-                        "uid) " +
-                        "VALUES ('" + fighter.getType() + "','"
-                        + fighter.getFuel() + "',"
-                        + fighter.getConsumption() + ","
-                        + fighter.getPrice() + ","
-                        + fighter.getWeapon() + ","
-                        + fighter.getPower_plant() + ","
-                        + fighter.getQuantum_drive() + "," +
-                        MySQLConnect.connectedUSer.id + ");";
-                logger.info(spaceship);
-                try {
-                    MySQLConnect.modifyDatabase(spaceship);
-
-                    logger.info("new fighter added to database");
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-                dispose();
-                LoginFrame log = new LoginFrame(false);
-
+                handleOrderClick();
             }
         });
     }
@@ -221,32 +171,6 @@ public class FighterConfigFrame extends JFrame {
         }
     }
 
-    private void setSelectedPower_plant() throws SQLException {
-        for (int i = 0; i < power_plants.size(); i++) {
-            if (power_plants.get(i).getName().equals(PowerComboBox.getSelectedItem())) {
-                selectedPower_plant = power_plants.get(i);
-            }
-        }
-
-    }
-
-    private void setSelectedQuantum_drive() throws SQLException {
-        for (int i = 0; i < quantum_drives.size(); i++) {
-
-            if (quantum_drives.get(i).getName().equals(QuantumComboBox.getSelectedItem().toString())) {
-                selectedQuantum_drive = quantum_drives.get(i);
-            }
-        }
-    }
-
-    private void setSelectedWeapon() throws SQLException {
-        for (int i = 0; i < weapons.size(); i++) {
-            if (weapons.get(i).getName().equals(WeaponComboBox.getSelectedItem())) {
-                selectedWeapon = weapons.get(i);
-            }
-        }
-    }
-
     private void setPriceLabel() {
         PriceLabel.setText(Integer.toString(
                 fighter.getPrice()
@@ -262,5 +186,36 @@ public class FighterConfigFrame extends JFrame {
         selectedWeapon = weapons.get(0);
         logger.info("default components added");
     }
+
+    private void handleOrderClick() {
+        Fighter fighter = (Fighter) this.fighter;
+        fighter.setPrice(getOrderTotalPrice());
+        fighter.setPower_plant(selectedPower_plant.getId());
+        fighter.setQuantum_drive(selectedQuantum_drive.getId());
+        fighter.setWeapon(selectedWeapon.getId());
+
+        Offer offer = FighterController.getOffer(
+                couponTextField.getText(),
+                efficientEngineCheckBox.isSelected(),
+                fighter);
+
+        fighter.setPrice(offer.getPrice());
+        fighter.setConsumption(offer.getConsumption());
+
+        if(FighterController.storeSpaceship(fighter))
+        {
+            dispose();
+            LoginFrame log = new LoginFrame(false);
+        }
+
+    }
+
+    private int getOrderTotalPrice() {
+        return fighter.getPrice()
+                + selectedPower_plant.getPrice()
+                + selectedQuantum_drive.getPrice()
+                + selectedWeapon.getPrice();
+    }
+
 
 }
