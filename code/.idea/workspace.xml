@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc0e5110-f4c4-4425-8c99-26f88f39b6e7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/code.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/ConfigFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/FighterConfigFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/LoginFrame$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/LoginFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/TransportConfigFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/TransportConfigFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/TransportConfigFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/TransportConfigFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/TransportConfigFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/TransportConfigFrame$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Frames/TransportConfigFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/TransportConfigFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/classes/Decorator/SpaceshipDecoratorBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/Decorator/SpaceshipDecoratorBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/classes/Spaceship/SpaceshipAbstract.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Fighter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Fighter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Industrial.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Industrial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Transport.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/SpaceshipType/Transport.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LoginControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/classes/Controller/LoginController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/Controller/LoginController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/classes/Controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/classes/Controller/LoginController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +55,7 @@
       <recent name="D:\GIT\ProgTech_Project\code\src\main\java\Frames" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.LoginTest">
+  <component name="RunManager" selected="JUnit.LoginControllerTest">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="code" />
@@ -86,19 +63,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FighterAttributesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="code" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FighterAttributesTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IndustrialAttributesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="code" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="IndustrialAttributesTest" />
+      <option name="MAIN_CLASS_NAME" value="LoginControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -113,21 +81,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TransportAttributesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginTest.authenticateUserBadPathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="code" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TransportAttributesTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="LoginTest" />
+      <option name="METHOD_NAME" value="authenticateUserBadPathTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest.authenticateUserHappyPathTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="code" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="LoginTest" />
+      <option name="METHOD_NAME" value="authenticateUserHappyPathTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.LoginControllerTest" />
         <item itemvalue="JUnit.LoginTest" />
-        <item itemvalue="JUnit.TransportAttributesTest" />
-        <item itemvalue="JUnit.IndustrialAttributesTest" />
-        <item itemvalue="JUnit.FighterAttributesTest" />
+        <item itemvalue="JUnit.LoginTest.authenticateUserHappyPathTest" />
+        <item itemvalue="JUnit.LoginTest.authenticateUserBadPathTest" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -156,7 +135,8 @@
       <workItem from="1652787341565" duration="3473000" />
       <workItem from="1652790880861" duration="5056000" />
       <workItem from="1652797579788" duration="644000" />
-      <workItem from="1652798260787" duration="4923000" />
+      <workItem from="1652798260787" duration="8911000" />
+      <workItem from="1652807342616" duration="820000" />
     </task>
     <servers />
   </component>

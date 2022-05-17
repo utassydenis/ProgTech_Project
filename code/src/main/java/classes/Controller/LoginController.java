@@ -35,6 +35,7 @@ public class LoginController {
 
     public void loginButtonClicked(String usr, String pswd) {
         frame.logger.info("Login button clicked.");
+
         user = getAuthenticatedUser(usr, pswd);
         if (user.username != null && user.password != null) {
             MySQLConnect.connectedUSer = user;
@@ -55,7 +56,7 @@ public class LoginController {
 
         try {
             String sql = "SELECT * FROM users WHERE username='"
-                    + programUsername + "' AND password='" + programPassword + "';";
+                    + programUsername + "' AND password=sha('" + programPassword + "');";
             ResultSet resultSet = MySQLConnect.executeQuery(sql);
             if (resultSet.next()) {
                 user.username = resultSet.getString("username");
@@ -72,7 +73,7 @@ public class LoginController {
     private void registerUser(String programUsername, String programPassword) {
         try {
             String sql = "INSERT INTO users (username, password) VALUES('"
-                    + programUsername + "','" + programPassword + "');";
+                    + programUsername + "', sha('" + programPassword + "'));";
             MySQLConnect.modifyDatabase(sql);
         } catch (Exception e) {
             e.printStackTrace();
