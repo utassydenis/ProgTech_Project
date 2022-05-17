@@ -15,29 +15,37 @@ public class LoginController {
 
     private LoginFrame frame;
 
-    public LoginController(LoginFrame f){
+    public LoginController(LoginFrame f) {
         frame = f;
     }
 
-    public void loginButtonClicked() {
-        frame.logger.info("Login button clicked.");
-        if (!frame.usernameField.getText().isEmpty() && !frame.passwordField.getText().isEmpty()) {
+    public boolean isUsernamePasswordEmpty(String usernameText, String passwordText) {
+        if (!usernameText.isEmpty() && !passwordText.isEmpty()) {
             String username = frame.usernameField.getText();
             String password = frame.passwordField.getText();
-            user = getAuthenticatedUser(username, password);
-            if (user.username != null && user.password != null) {
-                MySQLConnect.connectedUSer = user;
-                frame.logger.info("User logged in.");
-                frame.loginPanel.setVisible(false);
-                frame.choicePanel.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(frame,
-                        "Wrong username or password.", "Error!", JOptionPane.ERROR_MESSAGE);
-            }
+            loginButtonClicked(username, password);
+            return true;
+
         } else {
             JOptionPane.showMessageDialog(frame,
                     "Please type in a username and password", "Error!", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
+    }
+
+    public void loginButtonClicked(String usr, String pswd) {
+        frame.logger.info("Login button clicked.");
+        user = getAuthenticatedUser(usr, pswd);
+        if (user.username != null && user.password != null) {
+            MySQLConnect.connectedUSer = user;
+            frame.logger.info("User logged in.");
+            frame.loginPanel.setVisible(false);
+            frame.choicePanel.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(frame,
+                    "Wrong username or password.", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     public Users user;
@@ -60,9 +68,6 @@ public class LoginController {
         }
         return user;
     }
-
-
-
 
     private void registerUser(String programUsername, String programPassword) {
         try {
