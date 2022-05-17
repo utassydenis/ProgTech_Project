@@ -27,7 +27,6 @@ public abstract class Spaceship {
     public abstract int getWeapon();
 
     protected void setWeapon(int weapon) {
-        this.weapon = 0;
     }
 
     public abstract int getQuantum_drive();
