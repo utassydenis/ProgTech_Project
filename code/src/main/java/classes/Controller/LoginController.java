@@ -56,6 +56,7 @@ public class LoginController {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            frame.logger.warn(e.getMessage());
         }
         return user;
     }
