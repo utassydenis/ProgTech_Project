@@ -30,6 +30,7 @@ public class IndustrialConfigFrame extends JFrame {
     private JLabel PowerPriceLabel;
     private JButton OrderButton;
     private JTextField couponTextField;
+    private JCheckBox efficientEngineCheckBox;
 
     private SpaceshipAbstract industrial;
     private static Power_plant selectedPower_plant;
@@ -100,6 +101,11 @@ public class IndustrialConfigFrame extends JFrame {
                     Offer disc = new Offer(industrial);
                     disc.setDiscount(100);
                     industrial.setPrice(disc.getPrice());
+                }
+                if(efficientEngineCheckBox.isSelected()){
+                    Offer efficient = new Offer(industrial);
+                    efficient.setEfficiency(30);
+                    industrial.setConsumption(efficient.getConsumption());
                 }
 
 

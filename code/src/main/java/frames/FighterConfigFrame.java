@@ -35,6 +35,7 @@ public class FighterConfigFrame extends JFrame {
     private JLabel WeaponPriceLabel;
     private JButton OrderButton;
     private JTextField couponTextField;
+    private JCheckBox efficientEngineCheckBox;
     private SpaceshipAbstract fighter;
     private static Power_plant selectedPower_plant;
     private static Quantum_drive selectedQuantum_drive;
@@ -123,6 +124,11 @@ public class FighterConfigFrame extends JFrame {
                     Offer disc = new Offer(fighter);
                     disc.setDiscount(100);
                     fighter.setPrice(disc.getPrice());
+                }
+                if(efficientEngineCheckBox.isSelected()){
+                    Offer efficient = new Offer(fighter);
+                    efficient.setEfficiency(10);
+                    fighter.setConsumption(efficient.getConsumption());
                 }
 
                 String spaceship = "INSERT INTO spaceships (" +
