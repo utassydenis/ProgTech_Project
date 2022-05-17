@@ -30,6 +30,7 @@ public class TransportConfigFrame extends JFrame {
     private JLabel PowerPriceLabel;
     private JButton OrderButton;
     private JTextField couponTextField;
+    private JCheckBox efficientEngineCheckBox;
 
     private SpaceshipAbstract transport;
     private static Power_plant selectedPower_plant;
@@ -102,6 +103,12 @@ public class TransportConfigFrame extends JFrame {
                     disc.setDiscount(100);
                     transport.setPrice(disc.getPrice());
                 }
+                if(efficientEngineCheckBox.isSelected()){
+                    Offer efficient = new Offer(transport);
+                    efficient.setEfficiency(25);
+                    transport.setConsumption(efficient.getConsumption());
+                }
+
 
 
                 String spaceship = "INSERT INTO spaceships (" +

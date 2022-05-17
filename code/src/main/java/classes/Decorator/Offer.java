@@ -48,8 +48,27 @@ public class Offer extends SpaceshipDecoratorBase {
 
     @Override
     public int getPrice() {
+
         int baseprice = super.getPrice();
         int percent = 100 - getDiscount();
+        logger.info("Decorator setting discount.");
         return Math.round((baseprice * percent) / 100);
+
+    }
+    private int efficiency;
+
+    public int getEfficiency(){
+        return efficiency;
+    }
+    public void setEfficiency(int e){
+        efficiency = e;
+    }
+
+    @Override
+    public int getConsumption(){
+        int baseconsumption = super.getConsumption();
+        int percent = 100 - getEfficiency();
+        logger.info("Decorator setting consumption");
+        return Math.round((baseconsumption * percent)/100);
     }
 }

@@ -138,7 +138,8 @@ public class LoginFrame extends JDialog {
 
     private void registerUser(String programUsername, String programPassword) {
         try {
-            String sql = "INSERT INTO users (username, password) VALUES('" + programUsername + "','" + programPassword + "');";
+            String sql = "INSERT INTO users (username, password) VALUES('"
+                    + programUsername + "','" + programPassword + "');";
             MySQLConnect.modifyDatabase(sql);
         } catch (Exception e) {
             e.printStackTrace();
