@@ -1,9 +1,8 @@
 import classes.SpaceshipType.Fighter;
 import classes.SpaceshipType.Industrial;
 import classes.SpaceshipType.Transport;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.Assert.assertEquals;
 
 import classes.Decorator.Offer;
 
@@ -21,7 +20,7 @@ public class OfferTest {
         testOffer = new Offer(testFighter);
         testOffer.setDiscount(10);
         int expectedPrice = (int) Math.round(testFighter.getPrice() * 0.9);
-        assertEquals(expectedPrice, testOffer.getPrice());
+        Assertions.assertEquals(expectedPrice, testOffer.getPrice());
     }
 
     @Test
@@ -30,7 +29,7 @@ public class OfferTest {
         testOffer = new Offer(testTransport);
         testOffer.setDiscount(10);
         int expectedPrice = (int) Math.round(testTransport.getPrice() * 0.9);
-        assertEquals(expectedPrice, testOffer.getPrice());
+        Assertions.assertEquals(expectedPrice, testOffer.getPrice());
     }
 
     @Test
@@ -39,7 +38,7 @@ public class OfferTest {
         testOffer = new Offer(testIndustrial);
         testOffer.setDiscount(10);
         int expectedPrice = (int) Math.round(testIndustrial.getPrice() * 0.9);
-        assertEquals(expectedPrice, testOffer.getPrice());
+        Assertions.assertEquals(expectedPrice, testOffer.getPrice());
     }
 
     @Test
@@ -48,7 +47,7 @@ public class OfferTest {
         testOffer = new Offer(testFighter);
         testOffer.setEfficiency(10);
         int expectedEfficiency = (int) Math.round(testFighter.getConsumption() * 0.9);
-        assertEquals(expectedEfficiency, testOffer.getConsumption());
+        Assertions.assertEquals(expectedEfficiency, testOffer.getConsumption());
     }
 
     @Test
@@ -57,7 +56,7 @@ public class OfferTest {
         testOffer = new Offer(testTransport);
         testOffer.setEfficiency(10);
         int expectedEfficiency = (int) Math.round(testTransport.getConsumption() * 0.9);
-        assertEquals(expectedEfficiency, testOffer.getConsumption());
+        Assertions.assertEquals(expectedEfficiency, testOffer.getConsumption());
     }
 
     @Test
@@ -66,7 +65,7 @@ public class OfferTest {
         testOffer = new Offer(testIndustrial);
         testOffer.setEfficiency(10);
         int expectedEfficiency = (int) Math.round(testIndustrial.getConsumption() * 0.9);
-        assertEquals(expectedEfficiency, testOffer.getConsumption());
+        Assertions.assertEquals(expectedEfficiency, testOffer.getConsumption());
     }
 
 }
