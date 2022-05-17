@@ -3,10 +3,10 @@ package classes.SpaceshipType;
 import classes.Spaceship.SpaceshipAbstract;
 
 public class Transport extends SpaceshipAbstract {
-    public Transport() {
-        this.setPrice(550000);
-        this.setConsumption(175);
-        this.setType("transport");
+    public Transport(int price, int consumption) {
+        this.setPrice(price);
+        this.setConsumption(consumption);
+        this.setType();
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Transport extends SpaceshipAbstract {
 
     @Override
     public void setPrice(int price) {
-        super.price = price;
+        super.price = (int)(price*1.1);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Transport extends SpaceshipAbstract {
     }
 
     @Override
-    public void setType(String type) {
-        super.type = type;
+    public void setType() {
+        super.type = "transport";
     }
 }

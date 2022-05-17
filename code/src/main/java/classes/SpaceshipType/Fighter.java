@@ -5,10 +5,10 @@ import classes.Spaceship.SpaceshipAbstract;
 
 public class Fighter extends SpaceshipAbstract {
 
-    public Fighter() {
-        this.setPrice(400000);
-        this.setConsumption(70);
-        this.setType("fighter");
+    public Fighter(int price, int consumption) {
+        this.setPrice(price);
+        this.setConsumption(consumption);
+        this.setType();
     }
 
     @Override
@@ -23,7 +23,7 @@ public class Fighter extends SpaceshipAbstract {
 
     @Override
     public void setConsumption(int consumption) {
-        super.consumption = consumption;
+        super.consumption = (int)(consumption*0.8);
     }
 
     @Override
@@ -62,8 +62,8 @@ public class Fighter extends SpaceshipAbstract {
     }
 
     @Override
-    protected void setType(String type) {
-        super.type = type;
+    protected void setType() {
+        super.type = "fighter";
     }
 
     @Override

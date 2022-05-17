@@ -45,5 +45,5 @@ public abstract class SpaceshipAbstract {
 
     public abstract String getType();
 
-    protected abstract void setType(String type);
+    protected abstract void setType();
 }

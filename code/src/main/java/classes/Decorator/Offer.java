@@ -32,7 +32,7 @@ public class Offer extends SpaceshipDecoratorBase {
     }
 
     @Override
-    protected void setType(String type) {
+    protected void setType() {
 
     }
 
