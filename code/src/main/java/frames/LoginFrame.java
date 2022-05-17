@@ -218,5 +218,15 @@ public class LoginFrame extends JDialog {
         f.setSize(500, 250);
         f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         f.setVisible(true);
+        this.setVisible(false);
+        LoginFrame temp = this;
+        f.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent)
+            {
+                f.dispose();
+                temp.setVisible(true);
+            }
+        });
     }
 }
