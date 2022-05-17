@@ -44,7 +44,7 @@ public class IndustrialController {
                 + industrial.getFuel() + "',"
                 + industrial.getConsumption() + ","
                 + industrial.getPrice() + ","
-                + industrial.getWeapon() + ","
+                + 9 + ","
                 + industrial.getPower_plant() + ","
                 + industrial.getQuantum_drive() + "," +
                 MySQLConnect.connectedUSer.id + ");";

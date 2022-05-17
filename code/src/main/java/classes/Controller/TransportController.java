@@ -46,7 +46,7 @@ public class TransportController {
                 + transport.getFuel() + "',"
                 + transport.getConsumption() + ","
                 + transport.getPrice() + ","
-                + transport.getWeapon() + ","
+                + 9 + ","
                 + transport.getPower_plant() + ","
                 + transport.getQuantum_drive() + "," +
                 MySQLConnect.connectedUSer.id + ");";
