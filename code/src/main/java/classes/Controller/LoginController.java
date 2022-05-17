@@ -42,7 +42,7 @@ public class LoginController {
 
     public Users user;
 
-    private Users getAuthenticatedUser(String programUsername, String programPassword) {
+    public Users getAuthenticatedUser(String programUsername, String programPassword) {
         Users user = new Users();
 
         try {
