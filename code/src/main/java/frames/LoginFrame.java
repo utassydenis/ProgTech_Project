@@ -48,23 +48,8 @@ public class LoginFrame extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 logger.info("Login button clicked.");
-                if (!usernameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
-                    String username = usernameField.getText();
-                    String password = passwordField.getText();
-                    user = getAuthenticatedUser(username, password);
-                    if (user.username != null && user.password != null) {
-                        MySQLConnect.connectedUSer = user;
-                        logger.info("User created and stored in database.");
-                        loginPanel.setVisible(false);
-                        choicePanel.setVisible(true);
-                    } else {
-                        JOptionPane.showMessageDialog(LoginFrame.this,
-                                "Wrong username or password.", "Error!", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(LoginFrame.this,
-                            "Please type in a username and password", "Error!", JOptionPane.ERROR_MESSAGE);
-                }
+                login();
+
             }
         });
 
@@ -229,5 +214,25 @@ public class LoginFrame extends JDialog {
                 temp.setVisible(true);
             }
         });
+    }
+
+    private void login(){
+        if (!usernameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+            user = getAuthenticatedUser(username, password);
+            if (user.username != null && user.password != null) {
+                MySQLConnect.connectedUSer = user;
+                logger.info("User logged in.");
+                loginPanel.setVisible(false);
+                choicePanel.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(LoginFrame.this,
+                        "Wrong username or password.", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(LoginFrame.this,
+                    "Please type in a username and password", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
