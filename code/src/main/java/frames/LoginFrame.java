@@ -50,7 +50,7 @@ public class LoginFrame extends JDialog {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.loginButtonClicked();
+                controller.isUsernamePasswordEmpty(usernameField.getText(), passwordField.getText());
             }
         });
 
