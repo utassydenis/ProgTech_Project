@@ -43,6 +43,7 @@ public class LoginFrame extends JDialog {
             loginPanel.setVisible(false);
             registrationPanel.setVisible(false);
         }
+
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,6 +54,7 @@ public class LoginFrame extends JDialog {
                     user = getAuthenticatedUser(username, password);
                     if (user.username != null && user.password != null) {
                         MySQLConnect.connectedUSer = user;
+                        logger.info("User created and stored in database.");
                         loginPanel.setVisible(false);
                         choicePanel.setVisible(true);
                     } else {
@@ -78,11 +80,12 @@ public class LoginFrame extends JDialog {
         registrationRegistrationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                logger.info("Registration button clicked on registration.");
+                logger.info("Registration button clicked on registration panel.");
                 if (!registrationUsernameField.getText().isEmpty() && !registrationUsernameField.getText().isEmpty()) {
                     String username = registrationUsernameField.getText();
                     String password = registrationPasswordField.getText();
                     registerUser(username, password);
+                    logger.info("User created and stored in database successfully.");
                     registrationPanel.setVisible(false);
                     loginPanel.setVisible(true);
                 } else {
@@ -105,60 +108,12 @@ public class LoginFrame extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 logger.info("Check orders button pressed");
-                try {
-                    logger.info(Integer.toString(MySQLConnect.connectedUSer.id));
-                    String query = "SELECT COUNT(*) AS total FROM spaceships where uid ='" + MySQLConnect.connectedUSer.id + "';";
-                    ResultSet res = MySQLConnect.executeQuery(query);
-                    res.next();
-                    int size = res.getInt(1);
-
-                    query = "SELECT * FROM spaceships WHERE uid ='" + MySQLConnect.connectedUSer.id + "';";
-                    res = MySQLConnect.executeQuery(query);
-
-                    String columns[] = {"Type", "Fuel", "Consumption", "Price", "Weapon", "Power Plant", "Quantum drive"};
-                    String data[][] = new String[size][7];
-                    int i = 0;
-                    while (res.next()) {
-                        String type = res.getString("type");
-                        String fuel = res.getString("fuel");
-                        int consumption = res.getInt("consumption");
-                        int price = res.getInt("price");
-                        int weapon = res.getInt("weapon");
-                        int powerPlant = res.getInt("power_plant");
-                        int quantumDrive = res.getInt("quantum_drive");
-                        data[i][0] = type;
-                        data[i][1] = fuel;
-                        data[i][2] = consumption + "";
-                        data[i][3] = price + "";
-                        data[i][4] = weapon + "";
-                        data[i][5] = powerPlant + "";
-                        data[i][6] = quantumDrive + "";
-
-                        i++;
-                    }
-
-                    DefaultTableModel model = new DefaultTableModel(data, columns);
-                    JTable table = new JTable(model);
-                    table.setShowGrid(true);
-                    table.setShowVerticalLines(true);
-                    JScrollPane pane = new JScrollPane(table);
-                    JFrame f = new JFrame("Populate JTable from Database");
-                    JPanel panel = new JPanel();
-                    panel.add(pane);
-                    f.add(panel);
-                    f.setSize(500, 250);
-                    f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    f.setVisible(true);
-
-                } catch (Exception x) {
-                    x.printStackTrace();
-                }
+                getTableSize();
+                logger.info("Table successfully created.");
             }
         });
 
-
         setVisible(true);
-
     }
 
     public Users user;
@@ -183,13 +138,85 @@ public class LoginFrame extends JDialog {
 
     private void registerUser(String programUsername, String programPassword) {
         try {
-            logger.info(programPassword);
-            logger.info(programUsername);
             String sql = "INSERT INTO users (username, password) VALUES('" + programUsername + "','" + programPassword + "');";
-            logger.info(sql);
             MySQLConnect.modifyDatabase(sql);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void getTableSize() {
+        logger.info("Requesting table size from database.");
+        try {
+            String query = "SELECT COUNT(*) AS total FROM spaceships where uid ='"
+                    + MySQLConnect.connectedUSer.id + "';";
+            ResultSet res = MySQLConnect.executeQuery(query);
+            res.next();
+            int size = res.getInt(1);
+            prepareDataForTable(size);
+            logger.info("Request successful.");
+        } catch (Exception x) {
+
+            x.printStackTrace();
+        }
+    }
+
+    private void prepareDataForTable(int size) {
+        try {
+            logger.info("Preparing data for table.");
+            String query = "SELECT spaceships.type , spaceships.fuel, spaceships.consumption, spaceships.price,\n" +
+                    "weapons.name AS 'Weapon', \n" +
+                    "power_plants.name AS 'Power Plant',\n" +
+                    "quantum_drives.name AS 'Quantum Drive' \n" +
+                    "FROM((spaceships INNER JOIN weapons ON spaceships.weapon = weapons.id)\n" +
+                    "INNER JOIN power_plants ON spaceships.power_plant = power_plants.id)\n" +
+                    "INNER JOIN quantum_drives ON spaceships.quantum_drive = quantum_drives.id\n" +
+                    "WHERE spaceships.uid ='" + MySQLConnect.connectedUSer.id + "';";
+
+            ResultSet res = MySQLConnect.executeQuery(query);
+            String columns[] = {"Type", "Fuel", "Consumption", "Price",
+                    "Weapon", "Power Plant", "Quantum drive"};
+            String data[][] = new String[size][7];
+            int i = 0;
+            while (res.next()) {
+                String type = res.getString("type");
+                String fuel = res.getString("fuel");
+                int consumption = res.getInt("consumption");
+                int price = res.getInt("price");
+                String weapon = res.getString("Weapon");
+                String powerPlant = res.getString("Power Plant");
+                String quantumDrive = res.getString("Quantum Drive");
+
+                data[i][0] = type;
+                data[i][1] = fuel;
+                data[i][2] = consumption + "";
+                data[i][3] = price + "";
+                data[i][4] = weapon;
+                data[i][5] = powerPlant;
+                data[i][6] = quantumDrive;
+
+                i++;
+            }
+            createShipTable(data, columns);
+            logger.info("Preparation successful.");
+        } catch (Exception x) {
+            x.printStackTrace();
+        }
+    }
+
+    private void createShipTable(String data[][], String columns[]) {
+        logger.info("Creating table.");
+        DefaultTableModel model = new DefaultTableModel(data, columns);
+        JTable table = new JTable(model);
+        table.setShowGrid(true);
+        table.setShowVerticalLines(true);
+        JScrollPane pane = new JScrollPane(table);
+        JFrame f = new JFrame("Populate JTable from Database");
+        JPanel panel = new JPanel();
+        panel.add(pane);
+        f.add(panel);
+        f.setSize(500, 250);
+        f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        f.setVisible(true);
     }
 }
