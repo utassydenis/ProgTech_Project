@@ -1,9 +1,12 @@
 package frames;
 
+import classes.Controller.FighterController;
+import classes.Controller.IndustrialController;
 import classes.Decorator.Offer;
 import classes.Spaceship.Spaceship;
 import classes.SpaceshipModule.Power_plant;
 import classes.SpaceshipModule.Quantum_drive;
+import classes.SpaceshipType.Fighter;
 import classes.SpaceshipType.Industrial;
 import database.MySQLConnect;
 import org.slf4j.Logger;
@@ -82,60 +85,7 @@ public class IndustrialConfigFrame extends JFrame {
         OrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                industrial.setPrice(industrial.getPrice()
-                        + selectedPower_plant.getPrice()
-                        + selectedQuantum_drive.getPrice());
-                industrial.setPower_plant(selectedPower_plant.getId());
-                industrial.setQuantum_drive(selectedQuantum_drive.getId());
-
-                if (couponTextField.getText().equals("BARNA")) {
-                    Offer disc = new Offer(industrial);
-                    disc.setDiscount(25);
-                    industrial.setPrice(disc.getPrice());
-                } else if (couponTextField.getText().equals("DENES")) {
-                    Offer disc = new Offer(industrial);
-                    disc.setDiscount(10);
-                    industrial.setPrice(disc.getPrice());
-                } else if (couponTextField.getText().equals("EDE")) {
-                    Offer disc = new Offer(industrial);
-                    disc.setDiscount(100);
-                    industrial.setPrice(disc.getPrice());
-                }
-                if(efficientEngineCheckBox.isSelected()){
-                    Offer efficient = new Offer(industrial);
-                    efficient.setEfficiency(30);
-                    industrial.setConsumption(efficient.getConsumption());
-                }
-
-
-                String spaceship = "INSERT INTO spaceships (" +
-                        " type," +
-                        " fuel," +
-                        " consumption," +
-                        " price," +
-                        " weapon," +
-                        " power_plant," +
-                        "quantum_drive," +
-                        "uid) " +
-                        "VALUES ('" + industrial.getType() + "','"
-                        + industrial.getFuel() + "',"
-                        + industrial.getConsumption() + ","
-                        + industrial.getPrice() + ","
-                        + 9 + ","
-                        + industrial.getPower_plant() + ","
-                        + industrial.getQuantum_drive() + "," +
-                        MySQLConnect.connectedUSer.id + ");";
-                logger.info(spaceship);
-                try {
-                    MySQLConnect.modifyDatabase(spaceship);
-                    logger.info("new industrial added to database");
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-                dispose();
-                LoginFrame log = new LoginFrame(false);
-
+                handleOrderClick();
             }
         });
     }
@@ -211,6 +161,33 @@ public class IndustrialConfigFrame extends JFrame {
         selectedQuantum_drive = quantum_drives.get(0);
         selectedPower_plant = power_plants.get(0);
         logger.info("default components added");
+    }
+
+    private void handleOrderClick() {
+        Industrial industrial = (Industrial) this.industrial;
+        industrial.setPrice(getOrderTotalPrice());
+        industrial.setPower_plant(selectedPower_plant.getId());
+        industrial.setQuantum_drive(selectedQuantum_drive.getId());
+
+        Offer offer = IndustrialController.getOffer(
+                couponTextField.getText(),
+                efficientEngineCheckBox.isSelected(),
+                industrial);
+
+        industrial.setPrice(offer.getPrice());
+        industrial.setConsumption(offer.getConsumption());
+
+        if (IndustrialController.storeSpaceship(industrial)) {
+            dispose();
+            LoginFrame log = new LoginFrame(false);
+        }
+
+    }
+
+    private int getOrderTotalPrice() {
+        return industrial.getPrice()
+                + selectedPower_plant.getPrice()
+                + selectedQuantum_drive.getPrice();
     }
 
 }

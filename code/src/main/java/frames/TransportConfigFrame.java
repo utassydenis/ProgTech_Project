@@ -1,9 +1,12 @@
 package frames;
 
+import classes.Controller.IndustrialController;
+import classes.Controller.TransportController;
 import classes.Decorator.Offer;
 import classes.Spaceship.Spaceship;
 import classes.SpaceshipModule.Power_plant;
 import classes.SpaceshipModule.Quantum_drive;
+import classes.SpaceshipType.Industrial;
 import classes.SpaceshipType.Transport;
 import database.MySQLConnect;
 import org.slf4j.Logger;
@@ -83,60 +86,7 @@ public class TransportConfigFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                transport.setPrice(transport.getPrice()
-                        + selectedPower_plant.getPrice()
-                        + selectedQuantum_drive.getPrice());
-                transport.setPower_plant(selectedPower_plant.getId());
-                transport.setQuantum_drive(selectedQuantum_drive.getId());
-
-
-                if (couponTextField.getText().equals("BARNA")) {
-                    Offer disc = new Offer(transport);
-                    disc.setDiscount(25);
-                    transport.setPrice(disc.getPrice());
-                } else if (couponTextField.getText().equals("DENES")) {
-                    Offer disc = new Offer(transport);
-                    disc.setDiscount(10);
-                    transport.setPrice(disc.getPrice());
-                } else if (couponTextField.getText().equals("EDE")) {
-                    Offer disc = new Offer(transport);
-                    disc.setDiscount(100);
-                    transport.setPrice(disc.getPrice());
-                }
-                if(efficientEngineCheckBox.isSelected()){
-                    Offer efficient = new Offer(transport);
-                    efficient.setEfficiency(25);
-                    transport.setConsumption(efficient.getConsumption());
-                }
-
-
-
-                String spaceship = "INSERT INTO spaceships (" +
-                        " type," +
-                        " fuel," +
-                        " consumption," +
-                        " price," +
-                        " weapon," +
-                        " power_plant," +
-                        "quantum_drive," +
-                        "uid) " +
-                        "VALUES ('" + transport.getType() + "','"
-                        + transport.getFuel() + "',"
-                        + transport.getConsumption() + ","
-                        + transport.getPrice() + ","
-                        + 9 + ","
-                        + transport.getPower_plant() + ","
-                        + transport.getQuantum_drive() + "," +
-                        MySQLConnect.connectedUSer.id + ");";
-                logger.info(spaceship);
-                try {
-                    MySQLConnect.modifyDatabase(spaceship);
-                    logger.info("new transport added to database");
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-                dispose();
-                LoginFrame log = new LoginFrame(false);
+                handleOrderClick();
 
             }
         });
@@ -214,5 +164,30 @@ public class TransportConfigFrame extends JFrame {
         selectedPower_plant = power_plants.get(0);
         logger.info("default components added");
     }
+    private void handleOrderClick() {
+        Transport transport = (Transport) this.transport;
+        transport.setPrice(getOrderTotalPrice());
+        transport.setPower_plant(selectedPower_plant.getId());
+        transport.setQuantum_drive(selectedQuantum_drive.getId());
 
+        Offer offer = TransportController.getOffer(
+                couponTextField.getText(),
+                efficientEngineCheckBox.isSelected(),
+                transport);
+
+        transport.setPrice(offer.getPrice());
+        transport.setConsumption(offer.getConsumption());
+
+        if (TransportController.storeSpaceship(transport)) {
+            dispose();
+            LoginFrame log = new LoginFrame(false);
+        }
+
+    }
+
+    private int getOrderTotalPrice() {
+        return transport.getPrice()
+                + selectedPower_plant.getPrice()
+                + selectedQuantum_drive.getPrice();
+    }
 }
