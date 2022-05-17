@@ -1,7 +1,7 @@
 package frames;
 
 import classes.Decorator.Offer;
-import classes.Spaceship.SpaceshipAbstract;
+import classes.Spaceship.Spaceship;
 import classes.SpaceshipModule.Power_plant;
 import classes.SpaceshipModule.Quantum_drive;
 import classes.SpaceshipType.Industrial;
@@ -32,7 +32,7 @@ public class IndustrialConfigFrame extends JFrame {
     private JTextField couponTextField;
     private JCheckBox efficientEngineCheckBox;
 
-    private SpaceshipAbstract industrial;
+    private Spaceship industrial;
     private static Power_plant selectedPower_plant;
     private static Quantum_drive selectedQuantum_drive;
     Logger logger = LoggerFactory.getLogger(FighterConfigFrame.class);

@@ -1,6 +1,6 @@
 package classes.Spaceship;
 
-public abstract class SpaceshipAbstract {
+public abstract class Spaceship {
 
     protected String type;
     protected String fuel;
@@ -10,7 +10,7 @@ public abstract class SpaceshipAbstract {
     protected int power_plant;
     protected int price;
 
-    public SpaceshipAbstract() {
+    public Spaceship() {
         setFuel();
     }
 

@@ -1,6 +1,6 @@
 package frames;
 
-import classes.Spaceship.SpaceshipAbstract;
+import classes.Spaceship.Spaceship;
 import classes.SpaceshipType.Fighter;
 import classes.SpaceshipType.Industrial;
 import classes.SpaceshipType.Transport;
@@ -33,7 +33,7 @@ public class ConfigFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 logger.info("Fighter button clicked");
                 TypePanel.setVisible(false);
-                SpaceshipAbstract fighter = new Fighter(500000,100);
+                Spaceship fighter = new Fighter(500000,100);
                 try {
                     FighterConfigFrame fighterConfigFrame = new FighterConfigFrame((Fighter) fighter);
                 } catch (SQLException ex) {
@@ -47,7 +47,7 @@ public class ConfigFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 logger.info("Transport button clicked");
                 TypePanel.setVisible(false);
-                SpaceshipAbstract transport = new Transport(500000,100);
+                Spaceship transport = new Transport(500000,100);
 
                 try {
                     TransportConfigFrame transportConfigFrame = new TransportConfigFrame((Transport) transport);
@@ -62,7 +62,7 @@ public class ConfigFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 logger.info("Industrial button clicked");
                 TypePanel.setVisible(false);
-                SpaceshipAbstract industrial = new Industrial(500000,100);
+                Spaceship industrial = new Industrial(500000,100);
 
                 try {
                     IndustrialConfigFrame industrialConfigFrame = new IndustrialConfigFrame((Industrial) industrial);

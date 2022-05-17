@@ -1,11 +1,11 @@
 package classes.Decorator;
 
-import classes.Spaceship.SpaceshipAbstract;
+import classes.Spaceship.Spaceship;
 
-public abstract class SpaceshipDecoratorBase extends SpaceshipAbstract {
-    private SpaceshipAbstract spaceship;
+public abstract class SpaceshipDecoratorBase extends Spaceship {
+    private Spaceship spaceship;
 
-    public SpaceshipDecoratorBase(SpaceshipAbstract s) {
+    public SpaceshipDecoratorBase(Spaceship s) {
         spaceship = s;
     }
 

@@ -1,8 +1,8 @@
 package classes.SpaceshipType;
 
-import classes.Spaceship.SpaceshipAbstract;
+import classes.Spaceship.Spaceship;
 
-public class Transport extends SpaceshipAbstract {
+public class Transport extends Spaceship {
     public Transport(int price, int consumption) {
         this.setPrice(price);
         this.setConsumption(consumption);

@@ -1,13 +1,13 @@
 package classes.Decorator;
 
-import classes.Spaceship.SpaceshipAbstract;
+import classes.Spaceship.Spaceship;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Offer extends SpaceshipDecoratorBase {
     Logger logger = LoggerFactory.getLogger(Offer.class);
 
-    public Offer(SpaceshipAbstract s) {
+    public Offer(Spaceship s) {
         super(s);
     }
 

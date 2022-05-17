@@ -1,7 +1,7 @@
 package frames;
 
 import classes.Decorator.Offer;
-import classes.Spaceship.SpaceshipAbstract;
+import classes.Spaceship.Spaceship;
 import classes.SpaceshipModule.Power_plant;
 import classes.SpaceshipModule.Quantum_drive;
 import classes.SpaceshipModule.Weapon;
@@ -36,7 +36,7 @@ public class FighterConfigFrame extends JFrame {
     private JButton OrderButton;
     private JTextField couponTextField;
     private JCheckBox efficientEngineCheckBox;
-    private SpaceshipAbstract fighter;
+    private Spaceship fighter;
     private static Power_plant selectedPower_plant;
     private static Quantum_drive selectedQuantum_drive;
     private static Weapon selectedWeapon;
